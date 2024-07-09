@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package coinProto;
+
+// https://protobuf.dev/programming-guides/proto3/#scalar
+
+service Coin {
+  rpc create(requestData) returns (responseData);
+  rpc mine(requestData) returns (responseData);
+  rpc transfer(requestData) returns (responseData);
+  rpc transferTos(requestData) returns (responseData);  // 1 From, multi To's
+  rpc read(requestData) returns (responseData);
+}
+
+message requestData {
+  string sender = 1;
+  string payload = 2;
+  string signature = 3;
+}
+
+message responseData {
+  int32 code = 1;
+  string message = 2;
+  string payload = 3;
+}
+
+
+
+
+message coinItem {
+  string _id = 1;
+  string address = 2;
+  string public = 3;
+  string private = 4;
+  string code = 5;
+  string org_address = 6;
+  optional string name = 7;
+  optional string equal = 8;
+  optional string exchanges = 9;
+  optional string info = 10;
+}
+
+message coinBalance {
+  string address = 2;   // to address
+  string code = 5;
+  int32 balance = 7;    // to balance
+}

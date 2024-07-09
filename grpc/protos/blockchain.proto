@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package blockchainProto;
+
+// https://protobuf.dev/programming-guides/proto3/#scalar
+
+service Blockchain {
+    rpc check(requestData) returns (responseData);
+    rpc getLastBlock(requestData) returns (responseData);
+}
+
+message requestData {
+  string sender = 1;
+  string payload = 2;
+  string signature = 3;
+}
+
+message responseData {
+  int32 code = 1;
+  string message = 2;
+  string payload = 3;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package accountProto;
+
+// https://protobuf.dev/programming-guides/proto3/#scalar
+
+service Account {
+    rpc create(requestData) returns (responseData);
+    rpc read(requestData) returns (responseData);
+    rpc join(requestData) returns (responseData);
+}
+
+message requestData {
+  string sender = 1;
+  string payload = 2;
+  string signature = 3;
+}
+
+message responseData {
+  int32 code = 1;
+  string message = 2;
+  string payload = 3;
+}
+
+
+
+message voidNoParam {}
+
+message accountId {
+  string _id = 1;
+}
